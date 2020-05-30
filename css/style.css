@@ -1,0 +1,319 @@
+/* #Fonts
+================================================== */
+/* 	This is the proper syntax for an @font-face file
+		Just create a "fonts" folder at the root,
+		copy your FontName into code below and remove
+		comment brackets */
+/*	@font-face {
+	    font-family: 'FontName';
+	    src: url('../fonts/FontName.eot');
+	    src: url('../fonts/FontName.eot?iefix') format('eot'),
+	         url('../fonts/FontName.woff') format('woff'),
+	         url('../fonts/FontName.ttf') format('truetype'),
+	         url('../fonts/FontName.svg#webfontZam02nTh') format('svg');
+	    font-weight: normal;
+	    font-style: normal; }
+*/
+@font-face {
+  font-family: 'ClearSans Bold';
+  src: url("../webfonts/ClearSans-Bold.eot");
+  src: url("../webfonts/ClearSans-Bold?#iefix") format("embedded-opentype"), url("../webfonts/ClearSans-Bold.woff") format("woff"), url("../webfonts/ClearSans-Bold.ttf") format("truetype"); }
+
+@font-face {
+  font-family: 'ClearSans Light';
+  src: url("../webfonts/ClearSans-Light.eot");
+  src: url("../webfonts/ClearSans-Light?#iefix") format("embedded-opentype"), url("../webfonts/ClearSans-Light.woff") format("woff"), url("../webfonts/ClearSans-Light.ttf") format("truetype"); }
+
+/* Table of Content
+==================================================
+  #Variables
+  #Placeholder Classes
+  #Mixins*/
+/*  Variables
+==================================================*/
+/* Fonts */
+/*
+bg-color: #f7f5f2
+nav link color: #777777
+nav link:hover color: #333333
+a link:hover color: #005580
+*/
+/* Color Palette */
+/* Mixins
+==================================================*/
+/* line 53, ../scss/variables.scss */
+.text-center {
+  text-align: center !important; }
+
+/* line 54, ../scss/variables.scss */
+.left {
+  float: left !important; }
+
+/* line 55, ../scss/variables.scss */
+.right {
+  float: right !important; }
+
+/* line 56, ../scss/variables.scss */
+.no-wrap {
+  white-space: nowrap; }
+
+/* line 57, ../scss/variables.scss */
+.well {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 20px;
+  background-color: inherit;
+  border: 1px solid #e3e3e3;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05); }
+
+/* line 69, ../scss/variables.scss */
+.well blockquote {
+  border-color: #ddd;
+  border-color: rgba(0, 0, 0, 0.15); }
+
+/* line 72, ../scss/variables.scss */
+.well-large {
+  padding: 24px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px; }
+
+/* line 77, ../scss/variables.scss */
+.well-small {
+  padding: 9px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px; }
+
+/* Table of Content
+================================================== */
+/*
+ * Site Styles
+ * Page Styles
+ * Media Queries
+ * Font-Face 
+ */
+/* #Site Styles
+================================================== */
+/* line 14, ../scss/layout.scss */
+html {
+  font-size: 10px; }
+
+/* line 18, ../scss/layout.scss */
+body {
+  background-color: #f7f5f2;
+  border-top: 5px solid #3be0cf; }
+
+/* line 22, ../scss/layout.scss */
+header.nav-bar {
+  padding: 3.2rem 0rem 0rem;
+  background-color: #f7f5f2; }
+
+/* line 28, ../scss/layout.scss */
+h1.name, nav ul li {
+  color: #4d4d4d;
+  font: 2rem/1.8rem "ClearSans Bold", Helvetica, Arial; }
+
+/* line 29, ../scss/layout.scss */
+h1.name a {
+  color: #4d4d4d;
+  font-weight: bold;
+  text-decoration: none; }
+  /* line 34, ../scss/layout.scss */
+  h1.name a:hover {
+    color: #216d7d;
+    text-decoration: none; }
+
+/* line 41, ../scss/layout.scss */
+nav ul li {
+  display: inline-block;
+  float: right;
+  padding-right: 1rem;
+  text-decoration: none; }
+
+/* line 42, ../scss/layout.scss */
+nav ul a:link li {
+  color: #4d4d4d;
+  text-decoration: none; }
+
+/* line 43, ../scss/layout.scss */
+nav ul a:hover li, nav ul li.selected {
+  color: #216d7d;
+  text-decoration: none; }
+
+/* line 47, ../scss/layout.scss */
+img.circle {
+  -webkit-border-radius: 50rem;
+  -moz-border-radius: 50rem;
+  border-radius: 50rem; }
+
+/* line 52, ../scss/layout.scss */
+img.circle {
+  -webkit-box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.35);
+  box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.35);
+  -moz-transition: box-shadow 0.2s ease-in-out;
+  -o-transition: box-shadow 0.2s ease-in-out;
+  -ms-transition: box-shadow 0.2s ease-in-out;
+  -webkit-transition: box-shadow 0.2s ease-in-out; }
+
+/* line 63, ../scss/layout.scss */
+div.footer.outer {
+  background-color: #005580; }
+
+/* line 67, ../scss/layout.scss */
+footer {
+  color: #4d4d4d;
+  font: 3rem/3rem "ClearSans Light", Helvetica, Arial; }
+  /* line 71, ../scss/layout.scss */
+  footer section.contact-me, footer section.follow-me {
+    min-height: 5rem; }
+    /* line 74, ../scss/layout.scss */
+    footer section.contact-me h1, footer section.follow-me h1 {
+      color: #10b6d9;
+      font-weight: bold;
+      text-shadow: 0px 2px 0px rgba(33, 33, 33, 0.35); }
+    /* line 79, ../scss/layout.scss */
+    footer section.contact-me ul, footer section.follow-me ul {
+      display: inline-block; }
+      /* line 82, ../scss/layout.scss */
+      footer section.contact-me ul a:link, footer section.contact-me ul a:visited, footer section.contact-me ul a:active, footer section.follow-me ul a:link, footer section.follow-me ul a:visited, footer section.follow-me ul a:active {
+        text-decoration: none; }
+        /* line 85, ../scss/layout.scss */
+        footer section.contact-me ul a:link li, footer section.contact-me ul a:visited li, footer section.contact-me ul a:active li, footer section.follow-me ul a:link li, footer section.follow-me ul a:visited li, footer section.follow-me ul a:active li {
+          color: #10b6d9;
+          display: block;
+          font-weight: bold;
+          text-align: center; }
+      /* line 93, ../scss/layout.scss */
+      footer section.contact-me ul a:hover, footer section.follow-me ul a:hover {
+        text-decoration: none; }
+        /* line 96, ../scss/layout.scss */
+        footer section.contact-me ul a:hover li, footer section.follow-me ul a:hover li {
+          color: #e8e6e3;
+          display: block;
+          font-weight: bold;
+          text-align: center;
+          text-shadow: 2px 2px 0px rgba(75, 75, 75, 0.35); }
+
+/* #Page Styles
+================================================== */
+/* HOME PAGE
+=================== */
+/* line 116, ../scss/layout.scss */
+div.hello.outer {
+  background-color: #f7f5f2; }
+
+/* line 120, ../scss/layout.scss */
+div.my-work.outer {
+  background-color: #e8e6e3; }
+
+/* line 124, ../scss/layout.scss */
+div.my-recos.outer {
+  background-color: #e57166; }
+
+/* line 128, ../scss/layout.scss */
+div.my-projects.outer {
+  background-color: #f38c64; }
+
+/* line 132, ../scss/layout.scss */
+section {
+  min-height: 42rem;
+  padding: 2rem 0.75rem; }
+  /* line 136, ../scss/layout.scss */
+  section h1 {
+    font-size: 6rem;
+    padding-top: 0.75rem;
+    padding-bottom: .25rem; }
+  /* line 141, ../scss/layout.scss */
+  section h2 {
+    color: #4d4d4d;
+    font-size: 1.8rem;
+    font-weight: normal;
+    line-height: 1.4; }
+    /* line 147, ../scss/layout.scss */
+    section h2 span.highlight {
+      font-weight: bold;
+      color: #216d7d; }
+  /* line 152, ../scss/layout.scss */
+  section.hello {
+    font-family: "ClearSans Bold", Helvetica, Arial;
+    margin-top: 1rem; }
+    /* line 157, ../scss/layout.scss */
+    section.hello header img.me {
+      height: 18rem;
+      width: 18rem;
+      margin: -1rem 40% 0;
+      padding: 0;
+      -webkit-box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.15);
+      box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.15);
+      -moz-transition: box-shadow 0.2s ease-in-out;
+      -o-transition: box-shadow 0.2s ease-in-out;
+      -ms-transition: box-shadow 0.2s ease-in-out;
+      -webkit-transition: box-shadow 0.2s ease-in-out; }
+    /* line 172, ../scss/layout.scss */
+    section.hello header h1 {
+      color: #4d4d4d;
+      font-weight: bold;
+      text-shadow: 0px 2px 0px rgba(255, 255, 255, 0.45); }
+  /* line 181, ../scss/layout.scss */
+  section.my-work h1 {
+    color: #4d4d4d;
+    font-weight: bold;
+    text-shadow: 0px 2px 0px rgba(255, 255, 255, 0.45); }
+  /* line 189, ../scss/layout.scss */
+  section.my-recos h1 {
+    color: #84332e;
+    font-weight: bold;
+    text-shadow: 0px 2px 0px rgba(255, 255, 255, 0.25); }
+  /* line 197, ../scss/layout.scss */
+  section.my-projects h1 {
+    color: #b54418;
+    font-weight: bold;
+    text-shadow: 0px 2px 0px rgba(255, 255, 255, 0.25); }
+
+/* line 207, ../scss/layout.scss */
+a:link article h2 {
+  color: #4d4d4d;
+  font-weight: bold;
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+  -moz-transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
+  -o-transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
+  -ms-transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
+  -webkit-transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out; }
+
+/* line 219, ../scss/layout.scss */
+a:hover article img.circle {
+  -webkit-box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.65);
+  box-shadow: 2px 2px 10px 1px rgba(0, 0, 0, 0.65); }
+/* line 222, ../scss/layout.scss */
+a:hover article h2 {
+  color: #216d7d;
+  text-shadow: 2px 2px 0px rgba(75, 75, 75, 0.35); }
+
+/* CATEGORY PAGE
+=================== */
+/* #Media Queries
+================================================== */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  /* line 238, ../scss/layout.scss */
+  html {
+    font-size: 14px; } }
+@media only screen and (min-width: 1025px) {
+  /* line 245, ../scss/layout.scss */
+  html {
+    font-size: 16px; } }
+/* All Mobile Sizes (devices and browser) 
+@media only screen and (max-width: 850px) {}
+*/
+	/* Mobile Landscape Size to Tablet Portrait (devices and browsers)
+	@media only screen and (min-width: 480px) and (max-width: 850px) {}
+ 	*/
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers)
+@media only screen and (max-width: 479px) {}
+*/
