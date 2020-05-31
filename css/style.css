@@ -39,11 +39,12 @@
 .no-wrap {
   white-space: nowrap; }
 
-a:link {
-  color: #4d4d4d;
+a:link, a:visited {
+  color: #2ba6cb;
   font-weight: bold;
   padding-top: 0.5rem;
   padding-bottom: 1rem;
+  text-decoration: none;
   -moz-transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
   -o-transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
   -ms-transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
