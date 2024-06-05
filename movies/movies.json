@@ -9,6 +9,106 @@
             "title": "The Godfather",
             "year": 1972,
             "format": "Blu-ray"
+        },
+        {
+            "title": "The Godfather: Part II",
+            "year": 1974,
+            "format": "DVD"
+        },
+        {
+            "title": "The Dark Knight",
+            "year": 2008,
+            "format": "Blu-ray"
+        },
+        {
+            "title": "12 Angry Men",
+            "year": 1957,
+            "format": "VHS"
+        },
+        {
+            "title": "Schindler's List",
+            "year": 1993,
+            "format": "DVD"
+        },
+        {
+            "title": "Pulp Fiction",
+            "year": 1994,
+            "format": "Blu-ray"
+        },
+        {
+            "title": "The Lord of the Rings: The Return of the King",
+            "year": 2003,
+            "format": "DVD"
+        },
+        {
+            "title": "The Good, the Bad and the Ugly",
+            "year": 1966,
+            "format": "VHS"
+        },
+        {
+            "title": "Fight Club",
+            "year": 1999,
+            "format": "Blu-ray"
+        },
+        {
+            "title": "Forrest Gump",
+            "year": 1994,
+            "format": "DVD"
+        },
+        {
+            "title": "Inception",
+            "year": 2010,
+            "format": "Blu-ray"
+        },
+        {
+            "title": "The Lord of the Rings: The Fellowship of the Ring",
+            "year": 2001,
+            "format": "DVD"
+        },
+        {
+            "title": "Star Wars: Episode V - The Empire Strikes Back",
+            "year": 1980,
+            "format": "VHS"
+        },
+        {
+            "title": "The Matrix",
+            "year": 1999,
+            "format": "DVD"
+        },
+        {
+            "title": "Goodfellas",
+            "year": 1990,
+            "format": "Blu-ray"
+        },
+        {
+            "title": "One Flew Over the Cuckoo's Nest",
+            "year": 1975,
+            "format": "VHS"
+        },
+        {
+            "title": "Seven Samurai",
+            "year": 1954,
+            "format": "DVD"
+        },
+        {
+            "title": "Se7en",
+            "year": 1995,
+            "format": "Blu-ray"
+        },
+        {
+            "title": "The Silence of the Lambs",
+            "year": 1991,
+            "format": "DVD"
+        },
+        {
+            "title": "It's a Wonderful Life",
+            "year": 1946,
+            "format": "VHS"
+        },
+        {
+            "title": "Life Is Beautiful",
+            "year": 1997,
+            "format": "DVD"
         }
     ]
 }
