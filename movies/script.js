@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(data => {
                 movieList.innerHTML = '';
                 data.movies.forEach(movie => {
-                    const movieDiv = document.createElement('div');
+                    const movieDiv = document.createElement('li');
                     movieDiv.className = 'movie';
                     movieDiv.innerHTML = `
                         <h2>${movie.title}</h2>
