@@ -8,24 +8,31 @@
 </head>
 <body>
     <h1>My Movie Collection</h1>
-    <div id="movie-list"></div>
+    <table id="movie-table">
+        <thead>
+            <tr>
+                <th onclick="sortTable('title')">Title</th>
+                <th onclick="sortTable('year')">Year</th>
+                <th onclick="sortTable('format')">Format</th>
+            </tr>
+        </thead>
+        <tbody id="movie-list"></tbody>
+    </table>
 
-    <div class="hide">
     <h2>Add a New Movie</h2>
     <form id="movie-form">
         <label for="title">Title:</label><br>
-        <input type="text" id="title" name="title"><br>
+        <input type="text" id="title" name="title" required><br>
         <label for="year">Year:</label><br>
-        <input type="text" id="year" name="year"><br>
+        <input type="text" id="year" name="year" required><br>
         <label for="format">Format:</label><br>
-        <select id="exampleDropdown" name="exampleDropdown">
-            <option value="vhs">VHS</option>
-            <option value="dvd">DVD</option>
-            <option value="bluray">Bluray</option>
+        <select id="format" name="format" required>
+            <option value="DVD">DVD</option>
+            <option value="Blu-ray">Blu-ray</option>
+            <option value="VHS">VHS</option>
         </select><br><br>
         <input type="submit" value="Add Movie">
     </form>
-    </div>
 
     <script src="script.js"></script>
 </body>

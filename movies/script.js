@@ -1,52 +1,52 @@
 document.addEventListener('DOMContentLoaded', function () {
     const movieList = document.getElementById('movie-list');
     const movieForm = document.getElementById('movie-form');
-    
+    let moviesData = [];
+
     function fetchMovies() {
         fetch('movies.json')
             .then(response => response.json())
             .then(data => {
-                movieList.innerHTML = `
-                    <table>
-                        <thead>
-                            <td>Title</td>
-                            <td>Year</td>
-                            <td>Format</td>
-                        </thead>
-                    </table>
-                `;
-                data.movies.forEach(movie => {
-                    const movieDiv = document.createElement('li');
-                    movieDiv.className = 'movie';
-                    movieDiv.innerHTML = `
-                        <tr>
-                        <td><strong>${movie.title}</strong></td>
-                        <td>${movie.year}</td>
-                        <td>${movie.format}</td>
-                        </tr>
-                    `;
-                    movieList.appendChild(movieDiv);
-                });
+                moviesData = data.movies;
+                renderMovies();
             });
+    }
+
+    function renderMovies(sortBy = null) {
+        movieList.innerHTML = '';
+
+        if (sortBy) {
+            moviesData.sort((a, b) => {
+                if (a[sortBy] < b[sortBy]) return -1;
+                if (a[sortBy] > b[sortBy]) return 1;
+                return 0;
+            });
+        }
+
+        moviesData.forEach(movie => {
+            const movieRow = document.createElement('tr');
+            movieRow.innerHTML = `
+                <td>${movie.title}</td>
+                <td>${movie.year}</td>
+                <td>${movie.format}</td>
+            `;
+            movieList.appendChild(movieRow);
+        });
     }
 
     function addMovie(event) {
         event.preventDefault();
         const title = document.getElementById('title').value;
         const year = document.getElementById('year').value;
-        const poster = document.getElementById('format').value;
+        const format = document.getElementById('format').value;
 
-        fetch('movies.json')
-            .then(response => response.json())
-            .then(data => {
-                const newMovie = { title, year, format };
-                data.movies.push(newMovie);
-                
-                updateMoviesJson(data.movies);
-            });
+        const newMovie = { title, year, format };
+        moviesData.push(newMovie);
+
+        updateMoviesJson();
     }
 
-    function updateMoviesJson(movies) {
+    function updateMoviesJson() {
         const githubUsername = 'your-username';
         const repoName = 'movie-collection';
         const branch = 'main';
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(response => response.json())
         .then(data => {
             const sha = data.sha;
-            const content = btoa(JSON.stringify({ movies }));
+            const content = btoa(JSON.stringify({ movies: moviesData }));
 
             const updateContent = {
                 message: 'Update movies.json',
@@ -80,11 +80,15 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(response => {
             if (response.ok) {
-                fetchMovies();
+                renderMovies();
             } else {
                 alert('Failed to update movies.json');
             }
         });
+    }
+
+    function sortTable(property) {
+        renderMovies(property);
     }
 
     movieForm.addEventListener('submit', addMovie);
