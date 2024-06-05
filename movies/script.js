@@ -17,8 +17,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (sortBy) {
             moviesData.sort((a, b) => {
-                if (a[sortBy] < b[sortBy]) return -1;
-                if (a[sortBy] > b[sortBy]) return 1;
+                let aValue = a[sortBy];
+                let bValue = b[sortBy];
+
+                if (sortBy === 'title') {
+                    aValue = aValue.replace(/^The\s+/i, '');
+                    bValue = bValue.replace(/^The\s+/i, '');
+                }
+
+                if (aValue < bValue) return -1;
+                if (aValue > bValue) return 1;
                 return 0;
             });
         }
