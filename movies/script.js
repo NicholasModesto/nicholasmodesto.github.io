@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .then(response => response.json())
             .then(data => {
                 moviesData = data.movies;
-                renderMovies();
+                renderMovies('title');
             });
     }
 
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(response => {
             if (response.ok) {
-                renderMovies();
+                renderMovies('title');
             } else {
                 alert('Failed to update movies.json');
             }
