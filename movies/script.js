@@ -6,14 +6,24 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch('movies.json')
             .then(response => response.json())
             .then(data => {
-                movieList.innerHTML = '';
+                movieList.innerHTML = `
+                    <table>
+                        <thead>
+                            <td>Title</td>
+                            <td>Year</td>
+                            <td>Format</td>
+                        </thead>
+                    </table>
+                `;
                 data.movies.forEach(movie => {
                     const movieDiv = document.createElement('li');
                     movieDiv.className = 'movie';
                     movieDiv.innerHTML = `
-                        <h2>${movie.title}</h2>
-                        <p>${movie.year}</p>
-                        <p>${movie.format}</p>
+                        <tr>
+                        <td><strong>${movie.title}</strong></td>
+                        <td>${movie.year}</td>
+                        <td>${movie.format}</td>
+                        </tr>
                     `;
                     movieList.appendChild(movieDiv);
                 });
