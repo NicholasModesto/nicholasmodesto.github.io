@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Movie Collection</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>My Movie Collection</h1>
+    <div id="movie-list"></div>
+
+    <h2>Add a New Movie</h2>
+    <form id="movie-form">
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title"><br>
+        <label for="year">Year:</label><br>
+        <input type="text" id="year" name="year"><br>
+        <label for="format">Format:</label><br>
+        <select id="exampleDropdown" name="exampleDropdown">
+            <option value="vhs">VHS</option>
+            <option value="dvd">DVD</option>
+            <option value="bluray">Bluray</option>
+        </select><br><br>
+        <input type="submit" value="Add Movie">
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
