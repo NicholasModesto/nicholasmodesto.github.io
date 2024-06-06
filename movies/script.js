@@ -38,8 +38,8 @@ document.addEventListener('DOMContentLoaded', function () {
             const movieRow = document.createElement('tr');
             movieRow.innerHTML = `
                 <td>${movie.title}</td>
-                <td>${movie.year}</td>
                 <td>${movie.format}</td>
+                <td>${movie.notes}</td>
             `;
             movieList.appendChild(movieRow);
         });
@@ -48,10 +48,10 @@ document.addEventListener('DOMContentLoaded', function () {
     function addMovie(event) {
         event.preventDefault();
         const title = document.getElementById('title').value;
-        const year = document.getElementById('year').value;
+        const notes = document.getElementById('notes').value;
         const format = document.getElementById('format').value;
 
-        const newMovie = { title, year, format };
+        const newMovie = { title, format, notes };
         moviesData.push(newMovie);
 
         updateMoviesJson();
