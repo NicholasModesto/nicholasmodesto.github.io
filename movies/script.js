@@ -121,4 +121,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
     movieForm.addEventListener('submit', addMovie);
     fetchMovies();
+    /* change */
 });
