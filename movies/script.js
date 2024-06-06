@@ -1,6 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
     const movieList = document.getElementById('movie-list');
     const movieForm = document.getElementById('movie-form');
+    const addMovieButton = document.getElementById('add-movie-button');
+    const movieModal = document.getElementById('movie-modal');
+    const closeModal = document.getElementsByClassName('close')[0];
     let moviesData = [];
 
     function fetchMovies() {
@@ -52,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
         moviesData.push(newMovie);
 
         updateMoviesJson();
+        closeModalWindow();
     }
 
     function updateMoviesJson() {
@@ -98,6 +102,22 @@ document.addEventListener('DOMContentLoaded', function () {
     function sortTable(property) {
         renderMovies(property);
     }
+
+    function openModal() {
+        movieModal.style.display = "block";
+    }
+
+    function closeModalWindow() {
+        movieModal.style.display = "none";
+    }
+
+    addMovieButton.addEventListener('click', openModal);
+    closeModal.addEventListener('click', closeModalWindow);
+    window.addEventListener('click', function(event) {
+        if (event.target == movieModal) {
+            closeModalWindow();
+        }
+    });
 
     movieForm.addEventListener('submit', addMovie);
     fetchMovies();

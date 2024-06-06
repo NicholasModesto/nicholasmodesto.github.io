@@ -8,6 +8,7 @@
 </head>
 <body>
     <h1>My Movie Collection</h1>
+    <button id="add-movie-button">Add New Movie</button>
     <table id="movie-table">
         <thead>
             <tr>
@@ -19,20 +20,25 @@
         <tbody id="movie-list"></tbody>
     </table>
 
-    <h2>Add a New Movie</h2>
-    <form id="movie-form">
-        <label for="title">Title:</label><br>
-        <input type="text" id="title" name="title" required><br>
-        <label for="year">Year:</label><br>
-        <input type="text" id="year" name="year" required><br>
-        <label for="format">Format:</label><br>
-        <select id="format" name="format" required>
-            <option value="DVD">DVD</option>
-            <option value="Blu-ray">Blu-ray</option>
-            <option value="VHS">VHS</option>
-        </select><br><br>
-        <input type="submit" value="Add Movie">
-    </form>
+    <div id="movie-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add a New Movie</h2>
+            <form id="movie-form">
+                <label for="title">Title:</label><br>
+                <input type="text" id="title" name="title" required><br>
+                <label for="year">Year:</label><br>
+                <input type="text" id="year" name="year" required><br>
+                <label for="format">Format:</label><br>
+                <select id="format" name="format" required>
+                    <option value="DVD">DVD</option>
+                    <option value="Blu-ray">Blu-ray</option>
+                    <option value="VHS">VHS</option>
+                </select><br><br>
+                <input type="submit" value="Add Movie">
+            </form>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
