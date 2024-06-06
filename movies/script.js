@@ -1,124 +1,122 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const movieList = document.getElementById('movie-list');
-    const movieForm = document.getElementById('movie-form');
+document.addEventListener('DOMContentLoaded', function() {
+    const moviesTable = document.getElementById('movie-table');
+    const moviesList = document.getElementById('movie-list');
     const addMovieButton = document.getElementById('add-movie-button');
-    const movieModal = document.getElementById('movie-modal');
-    const closeModal = document.getElementsByClassName('close')[0];
-    let moviesData = [];
+    const modal = document.getElementById('movie-modal');
+    const closeModalButton = document.querySelector('.close');
+    const movieForm = document.getElementById('movie-form');
+    const typeaheadFilter = document.getElementById('typeahead-filter');
 
-    function fetchMovies() {
+    let movies = [];
+    let filteredMovies = [];
+
+    function loadMovies() {
         fetch('movies.json')
             .then(response => response.json())
             .then(data => {
-                moviesData = data.movies;
-                renderMovies('title');
-            });
+                movies = data;
+                filteredMovies = data;
+                displayMovies();
+            })
+            .catch(error => console.error('Error loading movies:', error));
     }
 
-    function renderMovies(sortBy = null) {
-        movieList.innerHTML = '';
+    function displayMovies() {
+        moviesList.innerHTML = '';
 
-        if (sortBy) {
-            moviesData.sort((a, b) => {
-                let aValue = a[sortBy];
-                let bValue = b[sortBy];
+        // Sort movies by title by default
+        filteredMovies.sort((a, b) => {
+            let titleA = a.title.replace(/^The\s+/i, '').toLowerCase();
+            let titleB = b.title.replace(/^The\s+/i, '').toLowerCase();
+            return titleA.localeCompare(titleB);
+        });
 
-                if (sortBy === 'title') {
-                    aValue = aValue.replace(/^The\s+/i, '');
-                    bValue = bValue.replace(/^The\s+/i, '');
-                }
-
-                if (aValue < bValue) return -1;
-                if (aValue > bValue) return 1;
-                return 0;
-            });
-        }
-
-        moviesData.forEach(movie => {
-            const movieRow = document.createElement('tr');
-            movieRow.innerHTML = `
+        filteredMovies.forEach((movie, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
                 <td>${movie.title}</td>
                 <td>${movie.year}</td>
                 <td>${movie.format}</td>
             `;
-            movieList.appendChild(movieRow);
+            moviesList.appendChild(row);
         });
     }
 
-    function addMovie(event) {
-        event.preventDefault();
-        const title = document.getElementById('title').value;
-        const year = document.getElementById('year').value;
-        const format = document.getElementById('format').value;
+    function sortTable(column) {
+        const sortOrder = moviesTable.dataset.sortOrder === 'asc' ? 'desc' : 'asc';
+        moviesTable.dataset.sortOrder = sortOrder;
 
-        const newMovie = { title, year, format };
-        moviesData.push(newMovie);
+        filteredMovies.sort((a, b) => {
+            let valueA = a[column];
+            let valueB = b[column];
 
-        updateMoviesJson();
-        closeModalWindow();
-    }
-
-    function updateMoviesJson() {
-        const githubUsername = 'your-username';
-        const repoName = 'movie-collection';
-        const branch = 'main';
-        const token = 'your-personal-access-token';
-
-        fetch(`https://api.github.com/repos/${githubUsername}/${repoName}/contents/movies.json`, {
-            headers: {
-                Authorization: `token ${token}`
+            if (column === 'title') {
+                valueA = valueA.replace(/^The\s+/i, '').toLowerCase();
+                valueB = valueB.replace(/^The\s+/i, '').toLowerCase();
             }
-        })
-        .then(response => response.json())
-        .then(data => {
-            const sha = data.sha;
-            const content = btoa(JSON.stringify({ movies: moviesData }));
 
-            const updateContent = {
-                message: 'Update movies.json',
-                content: content,
-                sha: sha,
-                branch: branch
-            };
-
-            return fetch(`https://api.github.com/repos/${githubUsername}/${repoName}/contents/movies.json`, {
-                method: 'PUT',
-                headers: {
-                    Authorization: `token ${token}`,
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(updateContent)
-            });
-        })
-        .then(response => {
-            if (response.ok) {
-                renderMovies('title');
+            if (sortOrder === 'asc') {
+                return valueA.localeCompare(valueB);
             } else {
-                alert('Failed to update movies.json');
+                return valueB.localeCompare(valueA);
             }
         });
+
+        displayMovies();
     }
 
-    function sortTable(property) {
-        renderMovies(property);
+    function filterMovies(event) {
+        const filterValue = event.target.value.toLowerCase();
+        filteredMovies = movies.filter(movie => movie.title.toLowerCase().includes(filterValue));
+        displayMovies();
     }
 
-    function openModal() {
-        movieModal.style.display = "block";
-    }
+    addMovieButton.addEventListener('click', () => {
+        modal.style.display = 'block';
+    });
 
-    function closeModalWindow() {
-        movieModal.style.display = "none";
-    }
+    closeModalButton.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
 
-    addMovieButton.addEventListener('click', openModal);
-    closeModal.addEventListener('click', closeModalWindow);
-    window.addEventListener('click', function(event) {
-        if (event.target == movieModal) {
-            closeModalWindow();
+    window.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            modal.style.display = 'none';
         }
     });
 
-    movieForm.addEventListener('submit', addMovie);
-    fetchMovies();
+    movieForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const newMovie = {
+            title: event.target.title.value,
+            year: event.target.year.value,
+            format: event.target.format.value
+        };
+
+        movies.push(newMovie);
+        filteredMovies = movies;
+        displayMovies();
+        modal.style.display = 'none';
+
+        // Update the movies.json file (only feasible in a server-side environment)
+        // This part is illustrative since we can't write to a file in GitHub Pages
+        // fetch('path/to/update/movies.json', {
+        //     method: 'POST',
+        //     headers: { 'Content-Type': 'application/json' },
+        //     body: JSON.stringify(movies)
+        // }).catch(error => console.error('Error updating movies:', error));
+    });
+
+    // Add event listeners for sorting
+    const headers = moviesTable.querySelectorAll('th');
+    headers.forEach(header => {
+        const column = header.textContent.toLowerCase();
+        header.addEventListener('click', () => sortTable(column));
+    });
+
+    // Add event listener for typeahead filter
+    typeaheadFilter.addEventListener('input', filterMovies);
+
+    loadMovies();
 });

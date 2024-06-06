@@ -5,17 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Movie Collection</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
 </head>
 <body>
     <h1>My Movie Collection</h1>
     <button id="add-movie-button">Add New Movie</button>
+    <input type="text" id="typeahead-filter" placeholder="Filter movies..." />
     <table id="movie-table">
         <thead>
             <tr>
-                <th onclick="">Title</th>
-                <th onclick="">Year</th>
-                <th onclick="">Format</th>
+                <th onclick="sortTable('title')">Title</th>
+                <th onclick="sortTable('year')">Year</th>
+                <th onclick="sortTable('format')">Format</th>
             </tr>
         </thead>
         <tbody id="movie-list"></tbody>
@@ -47,5 +47,6 @@
         </div>
     </div>
 
+    <script src="script.js"></script>
 </body>
 </html>
