@@ -14,8 +14,8 @@
         <thead>
             <tr>
                 <th>Title</th>
-                <th>Year</th>
                 <th>Format</th>
+                <th>Notes</th>
             </tr>
         </thead>
         <tbody id="movie-list"></tbody>
@@ -31,15 +31,14 @@
                     <input type="text" id="title" name="title" required>
                 </div>
                 <div class="form-group">
-                    <label for="year">Year:</label>
-                    <input type="text" id="year" name="year" required>
+                    <label for="notes">Notes:</label>
+                    <input type="text" id="notes" name="notes" required>
                 </div>
                 <div class="form-group">
                     <label for="format">Format:</label>
                     <select id="format" name="format" required>
                         <option value="DVD">DVD</option>
-                        <option value="Blu-ray">Blu-ray</option>
-                        <option value="VHS">VHS</option>
+                        <option value="BR">Bluray</option>
                     </select>
                 </div>
                 <input type="submit" value="Add Movie" class="submit-button">
