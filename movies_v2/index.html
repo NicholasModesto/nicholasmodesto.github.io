@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Movie Collection</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>My Movie Collection</h1>
+    <button id="add-movie-button">Add New Movie</button>
+    <table id="movie-table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Format</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody id="movie-list"></tbody>
+    </table>
+
+    <div id="movie-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add a New Movie</h2>
+            <form id="movie-form">
+                <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="format">Format:</label>
+                    <select id="format" name="format" required>
+                        <option value="dvd">DVD</option>
+                        <option value="br">Blu-ray</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="notes">Notes:</label>
+                    <input type="text" id="notes" name="notes" required>
+                </div>
+                <input type="submit" value="Add Movie" class="submit-button">
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

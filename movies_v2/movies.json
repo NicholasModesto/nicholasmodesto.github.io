@@ -1,0 +1,22 @@
+[
+    { "title": "The Godfather", "format": "dvd", "notes": "Classic mafia movie" },
+    { "title": "The Shawshank Redemption", "format": "br", "notes": "Great story of hope and friendship" },
+    { "title": "Schindler's List", "format": "dvd", "notes": "Historical drama" },
+    { "title": "Raging Bull", "format": "dvd", "notes": "Biographical sports drama" },
+    { "title": "Casablanca", "format": "dvd", "notes": "Classic romantic drama" },
+    { "title": "The Godfather Part II", "format": "dvd", "notes": "Sequel to The Godfather" },
+    { "title": "Gone with the Wind", "format": "dvd", "notes": "Epic historical romance" },
+    { "title": "Lawrence of Arabia", "format": "br", "notes": "Historical epic" },
+    { "title": "Vertigo", "format": "dvd", "notes": "Psychological thriller" },
+    { "title": "Psycho", "format": "dvd", "notes": "Horror thriller" },
+    { "title": "On the Waterfront", "format": "dvd", "notes": "Crime drama" },
+    { "title": "Sunset Boulevard", "format": "dvd", "notes": "Film noir" },
+    { "title": "Forrest Gump", "format": "br", "notes": "Comedy-drama" },
+    { "title": "The Sound of Music", "format": "dvd", "notes": "Musical drama" },
+    { "title": "12 Angry Men", "format": "dvd", "notes": "Courtroom drama" },
+    { "title": "West Side Story", "format": "dvd", "notes": "Musical romance" },
+    { "title": "Star Wars", "format": "br", "notes": "Sci-fi epic" },
+    { "title": "2001: A Space Odyssey", "format": "br", "notes": "Sci-fi classic" },
+    { "title": "E.T. the Extra-Terrestrial", "format": "dvd", "notes": "Family sci-fi" },
+    { "title": "The Silence of the Lambs", "format": "br", "notes": "Psychological horror" }
+]
