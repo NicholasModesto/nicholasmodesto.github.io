@@ -1,73 +1,124 @@
-document.addEventListener('DOMContentLoaded', () => {
-    let movieList = [];
+document.addEventListener('DOMContentLoaded', function () {
+    const movieList = document.getElementById('movie-list');
+    const movieForm = document.getElementById('movie-form');
+    const addMovieButton = document.getElementById('add-movie-button');
+    const movieModal = document.getElementById('movie-modal');
+    const closeModal = document.getElementsByClassName('close')[0];
+    let moviesData = [];
 
-    const movieTable = document.getElementById('movie-list');
-
-    function displayMovies(movies) {
-        movieTable.innerHTML = '';
-        movies.forEach(movie => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${movie.title}</td>
-                <td>${movie.format}</td>
-                <td>${movie.notes}</td>
-            `;
-            movieTable.appendChild(row);
-        });
+    function fetchMovies() {
+        fetch('movies.json')
+            .then(response => response.json())
+            .then(data => {
+                moviesData = data.movies;
+                renderMovies('title');
+            });
     }
 
-    function sortMoviesByTitle(movies) {
-        return movies.sort((a, b) => {
-            const titleA = a.title.replace(/^The\s+/i, '');
-            const titleB = b.title.replace(/^The\s+/i, '');
-            return titleA.localeCompare(titleB);
-        });
-    }
+    function renderMovies(sortBy = null) {
+        movieList.innerHTML = '';
 
-    // Fetch movies from the JSON file
-    fetch('movies.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            movieList = sortMoviesByTitle(data);
-            displayMovies(movieList);
-        })
-        .catch(error => console.error('Error fetching movie data:', error));
+        if (sortBy) {
+            moviesData.sort((a, b) => {
+                let aValue = a[sortBy];
+                let bValue = b[sortBy];
 
-    // Modal functionality
-    const modal = document.getElementById("movie-modal");
-    const addMovieButton = document.getElementById("add-movie-button");
-    const closeModal = document.getElementsByClassName("close")[0];
+                if (sortBy === 'title') {
+                    aValue = aValue.replace(/^The\s+/i, '');
+                    bValue = bValue.replace(/^The\s+/i, '');
+                }
 
-    addMovieButton.onclick = function() {
-        modal.style.display = "block";
-    }
-
-    closeModal.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+                if (aValue < bValue) return -1;
+                if (aValue > bValue) return 1;
+                return 0;
+            });
         }
+
+        moviesData.forEach(movie => {
+            const movieRow = document.createElement('tr');
+            movieRow.innerHTML = `
+                <td>${movie.title}</td>
+                <td>${movie.year}</td>
+                <td>${movie.format}</td>
+            `;
+            movieList.appendChild(movieRow);
+        });
     }
 
-    // Add movie functionality
-    document.getElementById('movie-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const newMovie = {
-            title: document.getElementById('title').value,
-            format: document.getElementById('format').value,
-            notes: document.getElementById('notes').value
-        };
-        movieList.push(newMovie);
-        movieList = sortMoviesByTitle(movieList);
-        displayMovies(movieList);
-        modal.style.display = "none";
+    function addMovie(event) {
+        event.preventDefault();
+        const title = document.getElementById('title').value;
+        const year = document.getElementById('year').value;
+        const format = document.getElementById('format').value;
+
+        const newMovie = { title, year, format };
+        moviesData.push(newMovie);
+
+        updateMoviesJson();
+        closeModalWindow();
+    }
+
+    function updateMoviesJson() {
+        const githubUsername = 'your-username';
+        const repoName = 'movie-collection';
+        const branch = 'main';
+        const token = 'your-personal-access-token';
+
+        fetch(`https://api.github.com/repos/${githubUsername}/${repoName}/contents/movies.json`, {
+            headers: {
+                Authorization: `token ${token}`
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            const sha = data.sha;
+            const content = btoa(JSON.stringify({ movies: moviesData }));
+
+            const updateContent = {
+                message: 'Update movies.json',
+                content: content,
+                sha: sha,
+                branch: branch
+            };
+
+            return fetch(`https://api.github.com/repos/${githubUsername}/${repoName}/contents/movies.json`, {
+                method: 'PUT',
+                headers: {
+                    Authorization: `token ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updateContent)
+            });
+        })
+        .then(response => {
+            if (response.ok) {
+                renderMovies('title');
+            } else {
+                alert('Failed to update movies.json');
+            }
+        });
+    }
+
+    function sortTable(property) {
+        renderMovies(property);
+    }
+
+    function openModal() {
+        movieModal.style.display = "block";
+    }
+
+    function closeModalWindow() {
+        movieModal.style.display = "none";
+    }
+
+    addMovieButton.addEventListener('click', openModal);
+    closeModal.addEventListener('click', closeModalWindow);
+    window.addEventListener('click', function(event) {
+        if (event.target == movieModal) {
+            closeModalWindow();
+        }
     });
+
+    movieForm.addEventListener('submit', addMovie);
+    fetchMovies();
 });
