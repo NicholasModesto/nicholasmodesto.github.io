@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //Fetch Google Sheets Data
     async function fetchGoogleSheetData() {
-        const apiKey = 'AIzaSyD0NTvju2gQOz-RlnmQdoR00cSvP-iRnw4'; // Replace with your actual API Key
+        const apiKey = 'BLAH!'; // Replace with your actual API Key
         const spreadsheetId = '1dlPnmIyduK_qcAziuLkWEfEoTCUAu3aK';
         const range = 'Sheet1!A:C'; // Adjust range as needed
 
