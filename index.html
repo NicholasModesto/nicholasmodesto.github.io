@@ -6,14 +6,57 @@
   <title>Nicholas Modesto | Director of Digital Commerce | Digital Strategy & UX Expert</title>
   <meta name="description" content="Nicholas Modesto, Director of Digital Commerce at Carrier Enterprise, passionate about digital technologies, UX design, programming, and business system integrations.">
   <meta name="robots" content="index, follow">
+  <link rel="icon" href="/cvv/img/favicon.ico" type="image/x-icon">
+   
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Open Graph / Social Media -->
   <meta property="og:title" content="Nicholas Modesto | Digital Commerce Leader">
   <meta property="og:description" content="Explore the profile of Nicholas Modesto, Director of Digital Commerce at Carrier Enterprise, focused on UX, digital strategy, and enterprise systems.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://nicholasmodesto.com">
   <meta property="og:site_name" content="Nicholas Modesto">
   <meta property="og:image" content="/cvv/img/favicon.ico">
+ 
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nicholas Modesto | Digital Commerce Leader">
+  <meta name="twitter:description" content="Director of Digital Commerce specializing in digital strategy and UX design">
+  
+  <!-- Favicon -->
   <link rel="icon" href="/cvv/img/favicon.ico" type="image/x-icon">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="apple-touch-icon" sizes="180x180" href="/cvv/img/favicon.ico">
+
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Nicholas Modesto",
+    "jobTitle": "Director of Digital Commerce",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Carrier Enterprise"
+    },
+    "url": "https://nicholasmodesto.com",
+    "sameAs": [
+      "https://www.linkedin.com/in/nicholasmodesto"
+    ],
+    "knowsAbout": [
+      "Digital Commerce",
+      "UX Design",
+      "Digital Strategy",
+      "System Integration",
+      "Project Management"
+    ]
+  }
+  </script>
+  
   <style>
     body {
       margin: 0;
@@ -56,6 +99,37 @@
       line-height: 1.6;
       color: #4d4d4d;
     }
+     /* Skills section */
+    .skills-section {
+      background: var(--bg-accent);
+      padding: 4rem 2rem;
+      margin: 4rem -2rem 0;
+      border-radius: 24px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .skill-tag {
+      background:#eae4dc;
+      padding: 1rem 1.5rem;
+      border-radius: 50px;
+      text-align: center;
+      font-weight: 500;
+      color: var(--text-primary);
+      box-shadow: var(--shadow-soft);
+      transition: all 0.3s ease;
+    }
+
+    .skill-tag:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-medium);
+    }
     a,
     a:active,
     a:hover {
@@ -91,6 +165,18 @@
     <section>
       <h3>Technical Strength</h3>
       <p>I have deep experience with complex business and procurement system integrations and workflows, helping organizations improve efficiency and drive digital transformation.</p>
+    </section>
+
+    <section>
+      <h3>Core Competencies</h2>
+      <div class="skills-grid">
+        <div class="skill-tag">Digital Transformation</div>
+        <div class="skill-tag">Team Leadership</div>
+        <div class="skill-tag">Digital Strategy</div>        
+        <div class="skill-tag">Project Management</div>
+        <div class="skill-tag">User Experience Design</div>
+        <div class="skill-tag">System Integration</div>
+      </div>
     </section>
   </main>
 
