@@ -6,7 +6,6 @@
   <title>Nicholas Modesto | Director of Digital Commerce | Digital Strategy & UX Expert</title>
   <meta name="description" content="Nicholas Modesto, Director of Digital Commerce at Carrier Enterprise, passionate about digital technologies, UX design, programming, and business system integrations.">
   <meta name="robots" content="index, follow">
-  <link rel="icon" href="/cvv/img/favicon.ico" type="image/x-icon">
    
   <!-- Preconnect for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -137,6 +136,10 @@
       color: #2ba6cb;
       text-decoration: underline;
     }
+    a:focus {
+      outline: 2px solid #2bcbbb;
+      outline-offset: 2px;
+    }
     footer {
       text-align: center;
       padding: 2rem;
@@ -169,14 +172,14 @@
     </section>
 
     <section>
-      <h3>Core Competencies</h2>
-      <div class="skills-grid">
-        <div class="skill-tag">Digital Transformation</div>
-        <div class="skill-tag">Team Leadership</div>
-        <div class="skill-tag">Digital Strategy</div>        
-        <div class="skill-tag">Project Management</div>
-        <div class="skill-tag">User Experience Design</div>
-        <div class="skill-tag">System Integration</div>
+      <h3>Core Competencies</h3>
+      <div class="skills-grid" role="list" aria-label="Core competencies">
+        <div class="skill-tag" role="listitem">Digital Transformation</div>
+        <div class="skill-tag" role="listitem">Team Leadership</div>
+        <div class="skill-tag" role="listitem">Digital Strategy</div>        
+        <div class="skill-tag" role="listitem">Project Management</div>
+        <div class="skill-tag" role="listitem">User Experience Design</div>
+        <div class="skill-tag" role="listitem">System Integration</div>
       </div>
     </section>
   </main>
@@ -185,9 +188,8 @@
     <p>Connect with me on <a href="https://www.linkedin.com/in/nicholasmodesto" target="_blank" rel="noopener noreferrer">LinkedIn</a>.</p>
     &copy; <span id="year"></span> Nicholas Modesto
   </footer>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <!-- Inline year script for better performance -->
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 
 </body>
 </html>
